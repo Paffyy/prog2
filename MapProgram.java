@@ -20,8 +20,8 @@ public class MapProgram extends JFrame {
 	private JButton newButton;
 	private JTextField searchText;
 	private MouseList mouseList = new MouseList();
-	private Map<String, List<Place>> placeByName = new HashMap<>();
-	private Map<Place.Category, List<Place>> placeByCategory = new HashMap<>();
+	private Map<String, Map<Position, Place>> placeByName = new HashMap<>();
+	private Map<Place.Category, Map<Position, Place>> placeByCategory = new HashMap<>();
 	private Map<Position, Place> markedPlace = new HashMap<>();
 
 	public MapProgram() {
@@ -117,7 +117,7 @@ public class MapProgram extends JFrame {
 		String[] categories = { "Train", "Bus", "Underground" };
 		for (String c : categories) {
 			sortedList.addSorted(c);
-			List<Place> placeCategory = new ArrayList<Place>();
+			Map<Position, Place> placeCategory = new HashMap<Position, Place>();
 			placeByCategory.put(convertCategory(c), placeCategory);
 		}
 	}
@@ -207,7 +207,7 @@ public class MapProgram extends JFrame {
 			}
 		}
 	}
-
+	
 	// check for same positions error
 
 	class MouseList extends MouseAdapter {

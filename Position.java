@@ -9,14 +9,14 @@ public class Position {
 	}
 	
 	public int getY() {
-		return y-20;
+		return y;
 	}
 	
 	public int getX() {
-		return x-10;
+		return x;
 	}
 	
 	public String toString() {
-		return "(" + getX() + ", " + getY() + ")";
+		return "(" + x + ", " + y + ")";
 	}
 }

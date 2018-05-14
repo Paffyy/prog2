@@ -8,6 +8,8 @@ import java.awt.event.*;
 	protected Position pos;
 	protected Category category;
 	protected Boolean marked = false;
+	protected int xOffset = 10;
+	protected int yOffset = 20;
 	public enum Category {
 		BUS, TRAIN, UNDERGROUND, NONE
 	}
@@ -22,7 +24,7 @@ import java.awt.event.*;
 		setPreferredSize(new Dimension(20, 20));
 		setMaximumSize(new Dimension(20, 20));
 		setMinimumSize(new Dimension(20, 20));
-		setBounds(pos.getX(),pos.getY(), 20, 20);
+		setBounds(pos.getX()-xOffset,pos.getY()-yOffset, 20, 20);
 		setVisible(true);
 	}
 	
@@ -55,11 +57,9 @@ import java.awt.event.*;
 		int nPoints = 3;
 		g.setColor(setColorByCategory());
 		g.fillPolygon(xPoints, yPoints, nPoints);
-		System.out.println(pos.toString());
 		if(marked) {
-			g.setColor(Color.ORANGE);
-			g.drawRect(pos.getX(),pos.getY(), getWidth(), getHeight());
-			System.out.println(pos.getX() +""+ pos.getY());
+			g.setColor(Color.MAGENTA);
+			g.drawRect(0,0, 19, 19);
 		}
 	}
 	
@@ -67,7 +67,7 @@ import java.awt.event.*;
 		@Override
 		public void mouseClicked(MouseEvent mev) {
 			if(mev.getButton() == MouseEvent.BUTTON1) {
-				marked = true;
+				marked = !marked;
 				repaint();
 			}
 		}
